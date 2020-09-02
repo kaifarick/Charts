@@ -2,23 +2,28 @@
 using UnityEngine.Networking;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace WeeklyAtivity
 {
+    public class ResponseDataEvent : UnityEvent<List<ServerData.ActData>>
+    {}
+
     public class ServerData : MonoBehaviour
     {
-        private string jsonUrl;
+        public ResponseDataEvent OnResponseDataEvent = new ResponseDataEvent();
+        
+        [SerializeField]
+        private string m_jsonUrl = "http://n44.me/statistics.json";
 
-        public int[] Calories = new int[7];
-        void Start()
+        public void LoadData()
         {
-            jsonUrl = "http://n44.me/statistics.json";
             StartCoroutine(LoadTextFromServer());
         }
 
-        IEnumerator LoadTextFromServer()
+        protected IEnumerator LoadTextFromServer()
         {
-            UnityWebRequest request = UnityWebRequest.Get(jsonUrl);
+            UnityWebRequest request = UnityWebRequest.Get(m_jsonUrl);
             yield return request.SendWebRequest();
             if (request.isNetworkError || request.isHttpError)
             {
@@ -29,24 +34,22 @@ namespace WeeklyAtivity
                 JsonData(request.downloadHandler.text);
             }
         }
+
         void JsonData(string json)
         {
             AllStatistic AllStats = JsonUtility.FromJson<AllStatistic>(json);
-
-            foreach (ActData Value in AllStats.data)
-            {
-                Debug.Log(Value.value);
-            }
+            
+            OnResponseDataEvent.Invoke(AllStats.data);
         }
 
 
         [System.Serializable]
-
         public class AllStatistic
         {
             public int previous;
             public int current;
             public int total;
+
             public List<ActData> data;
         }
 

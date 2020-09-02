@@ -844,7 +844,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -872,6 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9b4d4417053ce4f84a8ab47a97420b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_serverData: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -929,19 +929,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccae735e1e3692b4c891e3f29ca54281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Calories: 
 --- !u!1 &537990200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,6 +1382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1072722216}
   - component: {fileID: 1072722217}
+  - component: {fileID: 1072722218}
   m_Layer: 5
   m_Name: Week
   m_TagString: Untagged
@@ -1440,6 +1428,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9b4d4417053ce4f84a8ab47a97420b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_serverData: {fileID: 1072722218}
+--- !u!114 &1072722218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072722215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae735e1e3692b4c891e3f29ca54281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_jsonUrl: http://n44.me/statistics.json
 --- !u!1 &1082328220
 GameObject:
   m_ObjectHideFlags: 0
