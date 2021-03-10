@@ -54,11 +54,5 @@ namespace WeeklyAtivity
             for (int i = 0; i < sliders.Length; i++, lenght++)
                 sliders[lenght].value = calories[lenght];
         }
-
-        void RandomData()
-        {
-            for (int i = 0; i < calories.Length; i++)
-                calories[i] = Random.RandomRange(0, 5000);;
-        }
     }
 }
